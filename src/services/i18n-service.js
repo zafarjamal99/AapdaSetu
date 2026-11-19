@@ -164,6 +164,21 @@ export const translations = {
     feed_flir: 'FLIR Night Thermal IR',
     run_inference: 'Re-Run Inference Pass',
     scan_button: 'Start AI Camera Scan',
+    toggle_boxes: 'Toggle Detection Boxes',
+    flood_layer: 'Flood Segmentation Layer Controls',
+    mask_opacity: 'Flood Mask Opacity',
+    conf_thresh: 'Detection Confidence Threshold',
+
+    // Architecture Explorer
+    arch_title: 'AEGIS-MESH End-to-End System Architecture',
+    layer_1: 'TIER 1 — Field Ingestion Layer (BLE / Wi-Fi Direct / Satellite)',
+    layer_2: 'TIER 2 — Message Broker & Routing Engine (FastAPI + RabbitMQ)',
+    layer_3: 'TIER 3 — Intelligence & Analytics (YOLOv8 + Flood AI)',
+    layer_4: 'TIER 4 — Command & Dispatch GIS (NDRF Operations Center)',
+
+    // Logistics Solver (additional)
+    comparison_title: 'Response Latency & Hazard Risk Comparison (Naive vs AEGIS Solver)',
+    sos_btn: 'EMERGENCY SOS',
 
     // Common Controls
     close: 'Close',

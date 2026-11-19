@@ -82,7 +82,8 @@ def handle_api_request(path: str, method: str = "GET", payload: Dict[str, Any] =
         return routing_solver_service.solve_multi_objective(flood_depth, bed_priority, storm_risk)
 
     elif path == "/api/v1/mesh/topology" and method == "GET":
-        return mesh_engine_service.get_mesh_topology()
+        topology = mesh_engine_service.get_mesh_topology()
+        return {"status": "ACTIVE", **topology}
 
     else:
         return {"error": "Endpoint not found", "path": path, "status": 404}

@@ -1,1 +1,4 @@
 # AEGIS-MESH Vercel Serverless Python Requirements
+# This project uses only Python standard library modules:
+#   json, random, time, dataclasses, typing, http.server, urllib.parse
+# No third-party packages are required.

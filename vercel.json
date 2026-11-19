@@ -9,7 +9,12 @@
   "routes": [
     {
       "src": "/api/v1/(.*)",
-      "dest": "/api/index.py"
+      "dest": "/api/index.py",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization"
+      }
     },
     {
       "src": "/simulation",

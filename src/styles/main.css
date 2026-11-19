@@ -2,6 +2,49 @@
    AEGIS-MESH & EMERGE TACTICAL DISPATCH DESIGN SYSTEM
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   CSS CUSTOM PROPERTIES
+   Required by routing-solver.js, mesh-network.js, and ai-vision.js components
+   which use var(--*) tokens in their dynamically injected HTML.
+   -------------------------------------------------------------------------- */
+:root {
+  /* Typography */
+  --text-main: #151c27;
+  --text-muted: #4c4546;
+  --text-label: #7e7576;
+
+  /* Accent Colors */
+  --accent-cyan: #0284c7;
+  --accent-emerald: #059669;
+  --accent-pink: #e11d48;
+  --accent-amber: #d97706;
+  --accent-purple: #7c3aed;
+  --accent-red: #dc2626;
+
+  /* Surface & Background */
+  --bg-main: #f9f9ff;
+  --bg-panel: #ffffff;
+  --glass-bg: rgba(255, 255, 255, 0.95);
+
+  /* Borders */
+  --border-color: #cfc4c5;
+  --border-subtle: rgba(0, 0, 0, 0.08);
+
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Slider */
+  --slider-track: #cfc4c5;
+  --slider-thumb: #000000;
+}
+
 /* Custom scrollbar for minimal aesthetic */
 ::-webkit-scrollbar {
   width: 5px;
@@ -141,4 +184,187 @@
 
 .custom-user-gps-marker {
   transition: transform 0.1s linear;
+}
+
+/* --------------------------------------------------------------------------
+   COMPONENT PANEL UTILITY CLASSES
+   Used by routing-solver.js, mesh-network.js, ai-vision.js, architecture.js
+   -------------------------------------------------------------------------- */
+
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Slider group layout */
+.slider-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.slider-val {
+  font-weight: 700;
+  color: var(--text-main);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 11px;
+}
+
+/* Range input styling for solver panels */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  background: var(--slider-track);
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--slider-thumb);
+  cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--slider-thumb);
+  cursor: pointer;
+  border: 2px solid #fff;
+}
+
+/* Architecture & mesh canvas containers */
+.arch-node {
+  transition: all 0.2s ease;
+}
+
+.arch-node:hover {
+  filter: brightness(1.1);
+}
+
+/* Stat metric grid used by routing solver & architecture panels */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.metric-cell {
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+}
+
+.metric-label {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--text-main);
+  display: block;
+  line-height: 1.1;
+}
+
+/* Assignment row cards in routing solver */
+.assignment-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  background: rgba(0,0,0,0.02);
+  margin-bottom: 8px;
+}
+
+.assignment-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Mesh canvas label overlays */
+.mesh-node-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 10px;
+  fill: #94a3b8;
+  text-anchor: middle;
+}
+
+/* AI vision canvas overlay */
+#vision-canvas {
+  display: block;
+}
+
+/* Confidence threshold slider special accent */
+#rng-conf-threshold::-webkit-slider-thumb {
+  background: #0284c7;
+}
+
+/* Architecture flow diagram nodes */
+.arch-block {
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid;
+}
+
+/* Responsive adjustments for component panels */
+@media (max-width: 1024px) {
+  .metric-grid {
+    grid-template-columns: 1fr;
+  }
 }
